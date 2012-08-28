@@ -1,8 +1,8 @@
 astro-gr
 ========
 
-Astro-GR_ Presentation about GPU
-and GraviDy_ project.
+`Astro-GR`_ Presentation about GPU
+and `GraviDy`_ project.
 
 
 .. _Astro-GR:: http://astro-gr.aei.mpg.de/Astro-GR@Beijing-2012
