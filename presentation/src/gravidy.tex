@@ -1,0 +1,117 @@
+\begin{frame}
+    \frametitle{GraviDy}
+    \framesubtitle{Introduction}
+    \begin{center}
+        A semi-keplerian N-body integrator...
+    \end{center}
+\end{frame}
+
+\begin{frame}
+    \frametitle{GraviDy}
+    \framesubtitle{Features}
+    \begin{itemize}
+        \item Based on a 4th order Hermite integrator.
+        \item Using block timesteps.
+        \item Add keplerian treatment to work with the massive central object.
+              (Loeckmann dissertation reference).
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{GraviDy}
+    \framesubtitle{Code}
+    \begin{itemize}
+        \item Written in C++ and CUDA.
+        \item Modular developing.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{GraviDy}
+    \framesubtitle{Predictor-Corrector procedure}
+    \begin{enumerate}
+        \item Initial $a$ and $a^{(1)}$ calculation.
+        \item Initial block timesteps calculation.
+        \item Select particles to move.
+        \begin{enumerate}
+            \item Calculate the predicted position and velocity.
+            \item Calculate the $a$, $a^{(1)}$, $a^{(2)}$ and $a^{(3)}$.
+            \item Apply the correction to the position and velocity.
+            \item Update timesteps.
+        \end{enumerate}
+    \end{enumerate}
+\end{frame}
+
+\begin{frame}
+    \frametitle{GraviDy}
+    \framesubtitle{Kepler's correction}
+    \begin{eqnarray}
+        \boldsymbol{a}_{i} =   \underbrace{ - G m_{0}
+                                          \dfrac{\boldsymbol{r}_{i}}{r_{i}^{3}}
+                                          }_{unperturbed\ motion}
+                             - \underbrace{ \sum\limits_{\substack{j=1\\j\neq i}}^{N-1}
+                                            G m_{j} \dfrac{\boldsymbol{r}_{ij}}{r_{ij}^{3}}
+                                          }_{perturbing\ force}
+    \end{eqnarray}
+\end{frame}
+
+\begin{frame}
+    \frametitle{GraviDy}
+    \framesubtitle{Kepler's correction}
+    \begin{enumerate}
+        \item This is applied to the \blue{Predicted} step.
+        \item The normal Hermite formula is:
+        \begin{eqnarray}
+            \boldsymbol{r}_{pred} =    \boldsymbol{      r}_{i}              +
+                                       \boldsymbol{      v}_{i} \Delta t     +
+                         \dfrac{1}{2!} \boldsymbol{      a}_{i} \Delta t^{2} +
+                         \dfrac{1}{3!} \boldsymbol{\dot{a}}_{i} \Delta t^{3}
+        \end{eqnarray}
+        \item With the Kepler's correction:
+        \begin{eqnarray}
+            \boldsymbol{r}_{pred} =    \blue{\boldsymbol{      r}_{k,pred}}         +
+                                             \boldsymbol{      v}_{i} \Delta t     +
+                         \dfrac{1}{2!}       \boldsymbol{      a}_{i} \Delta t^{2} +
+                         \dfrac{1}{3!}       \boldsymbol{\dot{a}}_{i} \Delta t^{3}
+        \end{eqnarray}
+        \item where $\boldsymbol{r}_{k}$ and its derivates 
+            are obtained from the unperturbed motion along a Keplerian orbit,
+        \begin{eqnarray}
+            \blue{\boldsymbol{r}_{k,pred}} =  \boldsymbol{      r}_{k}              +
+                                       \boldsymbol{      v}_{k} \Delta t     +
+                         \dfrac{1}{2!} \boldsymbol{      a}_{k} \Delta t^{2} +
+                         \dfrac{1}{3!} \boldsymbol{\dot{a}}_{k} \Delta t^{3}
+        \end{eqnarray}
+
+    \end{enumerate}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Preliminar results}
+    \begin{figure}
+        \centering
+        \label{fig:init-time}
+        %\includegraphics[width=0.8\textwidth]{img/result-init_accjerk}
+        \caption{Initial $a$ and $\dot{a}$ calculation}
+    \end{figure}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Preliminar results}
+    \begin{figure}
+        \centering
+        \label{fig:init-time}
+        %\includegraphics[width=0.8\textwidth]{img/result-init_accjerk}
+        \caption{Energy Conservation}
+    \end{figure}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Preliminar results}
+    \begin{figure}
+        \centering
+        \label{fig:init-time}
+        %\includegraphics[width=0.8\textwidth]{img/result-init_accjerk}
+        \caption{Execution time}
+    \end{figure}
+\end{frame}
