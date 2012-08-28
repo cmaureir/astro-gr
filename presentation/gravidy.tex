@@ -1,0 +1,58 @@
+\documentclass{beamer}
+\usepackage[english,activeacute]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{listings}
+\usepackage{color}
+\usepackage{tikz}
+
+\definecolor{red}{RGB}{255,0,0}
+\definecolor{green}{RGB}{0,255,0} 
+\definecolor{blue}{RGB}{0,0,255} 
+\definecolor{oran}{RGB}{255,93,0} 
+
+\newcommand{\blue}{\textcolor{blue}}
+\newcommand{\red}{\textcolor{red}}
+\newcommand{\green}{\textcolor{green}}
+\newcommand{\oran}{\textcolor{oran}}
+
+\renewcommand\mathfamilydefault{\rmdefault}
+
+\usetheme[pageofpages=of,
+          alternativetitlepage=true,
+          titlepagelogo=img/aei,
+          watermark=,
+          watermarkheight=50px,
+          watermarkheightmult=1,
+          ]{Torino}
+
+\usecolortheme{nouvelle}
+\vspace{-0.5cm}
+\author[Cristián Maureira]
+       {\large Cristián Maureira\\
+        \small \textcolor{gray}{Computer Science Master Student, UTFSM}}
+\title[GraviDy]
+      {\huge GraviDy}
+\subtitle{\Large A modular direct N-body GPU integrator.}
+\institute[AEI]
+          {Albert Einstein Institute}
+
+\begin{document}
+
+% First slide
+\begin{frame}[t,plain]
+    \titlepage
+\end{frame}
+
+\include{src/introduction}
+\include{src/gpu}
+\include{src/cuda}
+\include{src/gravidy}
+\include{src/future_work}
+\include{src/thrust}
+
+% Final slide
+\begin{frame}[t,plain]
+\titlepage
+\end{frame}
+
+\end{document}
