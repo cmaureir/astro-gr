@@ -38,7 +38,7 @@
         int main()
         {
             ...
-            // Llamada kernel con N hebras en 1 bloque
+            // Kernel call using N threads and 1 block
             VecAdd <<< 1 , N >>> (A, B, C);
             ...
         }
@@ -51,8 +51,8 @@
     \frametitle{CUDA}
     \framesubtitle{Threads}
     \begin{itemize}
-        \item Lighweight.
-        \item Efficients.
+        \item Lightweight.
+        \item Efficient.
         \item Cooperation.
         \item Synchronization.
         \item Organization and programming.
