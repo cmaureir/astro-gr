@@ -70,9 +70,10 @@
 
 \usecolortheme{nouvelle}
 \vspace{-0.5cm}
-\author[Cristián Maureira]
+\author[C. Maureira \& P. Amaro-Seoane]
        {\large Cristián Maureira\\
-        \small \textcolor{gray}{Computer Science Master Student, UTFSM}}
+       \large Pau Amaro-Seoane}%\\
+       % \small \textcolor{gray}{Albert Einstein Institute}}
 \title[GraviDy]
       {\huge GraviDy}
 \subtitle{\Large A modular direct N-body GPU integrator.}
@@ -81,6 +82,9 @@
 
 \begin{document}
 
+\bibliographystyle{unsrt}
+%\pagestyle{empty}
+
 % First slide
 \begin{frame}[t,plain]
     \titlepage
@@ -88,14 +92,19 @@
 
 \include{src/introduction}
 \include{src/gpu}
-\include{src/cuda}
 \include{src/gravidy}
 \include{src/future_work}
+%\include{src/cuda}
 %\include{src/thrust}
 
 % Final slide
 \begin{frame}[t,plain]
 \titlepage
+\end{frame}
+
+\begin{frame}[fragile]
+\scriptsize
+\bibliography{gravidy}
 \end{frame}
 
 \end{document}

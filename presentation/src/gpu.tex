@@ -1,10 +1,44 @@
+\section{GPU Computing}
+\begin{frame}
+    \begin{center}
+        {\Huge GPU Computing}
+    \end{center}
+\end{frame}
+
+\begin{frame}
+    \frametitle{GPU Computing}
+    \framesubtitle{Some background concepts}
+    Two types of Parallelism:
+    \begin{description}
+        \item[Task parallelism]
+            Each processor perform a self task.
+        \item[Data parallelism]
+            Each processor perform the same task, but on its own data set.
+    \end{description}
+\end{frame}
+
+\begin{frame}
+    \frametitle{GPU Computing}
+    \framesubtitle{Some background concepts}
+    \begin{description}
+        \item[Performance]
+                Capacity of perform individual instructions in a certain time.
+        \item[Throughput]
+                Capacity of perform a whole task in a certain time.
+        \item[Latency]
+                Measure of time delay experienced in a system.
+        \item[Granularity]
+                Broke down a system into small parts.(Coarse and Fine)
+    \end{description}
+\end{frame}
+
 \begin{frame}
     \frametitle{GPU Computing}
     \framesubtitle{Introduction}
     \begin{itemize}
-        \item At the beginning, programming in GPU was really difficult.
-        \item Now, there are a lot of languages, applications, libraries, etc
-            who really help to enter in the GPU Computing world.
+        \item Beginning of the GPU programming was really difficult.
+        \item Nowadays a lot of ``languages'', ``applications'', ``libraries'', etc
+            are available to enter on the GPU Computing world.
         \begin{itemize}
             \item OpenCL, CUDA, CUDA Fortran, OpenACC, jCUDA, CUDA.NET, PyCUDA, etc.
             \item MATLAB.
@@ -44,7 +78,7 @@
     \framesubtitle{}
     \begin{itemize}
         \item The GPU Computing \red{is not} the solution for every computational problem.
-        \item First you need to enter in the ``APOD'' design cycle.
+        \item It is mandatory to enter in the ``APOD'' design cycle.
     \end{itemize}
 \end{frame}
 
@@ -65,11 +99,11 @@
     \begin{itemize}
         \item What?
         \begin{itemize}
-            \item Locate the parts of the code, responsible for the bulk of the execution time.
+            \item Locate the code sections, responsible for the bulk of the execution time.
         \end{itemize}
         \item How?
         \begin{itemize}
-            \item Using profiling tools (e.g. \texttt{gprof})
+            \item Using profiling tools (e.g. \texttt{gprof}, \texttt{vTune}, etc)
         \end{itemize}
     \end{itemize}
 \end{frame}
@@ -80,8 +114,8 @@
     \begin{itemize}
         \item What?
         \begin{itemize}
-            \item Parallelize the hotspots.
-                (Be careful of the refactoring!)
+            \item Parallelize the ``hotspots''.
+                (Be careful of the code refactoring!)
         \end{itemize}
         \item How?
         \begin{itemize}
@@ -100,10 +134,10 @@
         \end{itemize}
         \item How?
         \begin{itemize}
-            \item Reviewing the following ideas:
+            \item Doing a review of the following topics:
             \begin{itemize}
                 \item Data transfer.
-                \item Floating point operations.
+                \item Floating point operations (FLOPs).
                 \item Loop unrolling.
                 \item etc.
             \end{itemize}
@@ -117,7 +151,7 @@
     \begin{itemize}
         \item What?
         \begin{itemize}
-            \item Try on the production step the current parallelization idea,
+            \item Check if the current parallelization idea is enough for the program,
               before trying to improve another hotspot.
         \end{itemize}
         \item How?

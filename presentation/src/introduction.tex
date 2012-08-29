@@ -1,53 +1,67 @@
-\begin{frame}
-    \frametitle{Introduction}
-    \framesubtitle{The initial idea}
-    \begin{enumerate}
-        \item N-body introduction?
-        \item The problems related to the galactic center,
-              or planetary systems...?
-        \item The widely know N-body integrators have problems
-              with the Energy conservation...?
-    \end{enumerate}
-\end{frame}
+\section{Introduction}
 
 \begin{frame}
-    \frametitle{Introduction}
-    \framesubtitle{Why write a new integrator?}
+    \frametitle{Agenda}
     \begin{itemize}
-            \item Previous work:
-            \begin{itemize}
-                \item Aarseth integrators (NBODY0, NBODY1, ..., NBODY7)
-                \item Gravity Pipe (GRAPE).
-            \end{itemize}
-            \item GPU is replacing the CPU to perform scientific calculations.
-                 \emph(``General Purpose computing on GPUs'' - \url{http://gpgpu.org})
-            \item ...another reason.
+        \item GPU Computing.
+        \item The GraviDy project.
+        \item Future work and discussion.
     \end{itemize}
 \end{frame}
 
-\begin{frame}
-    \frametitle{Introduction}
-    \framesubtitle{Parallel computing background}
-    \begin{description}
-        \item[Task parallelism]
-            Each processor perform a self task.
-        \item[Data parallelism]
-            Each processor perform the same task, but on its own data set.
-    \end{description}
-\end{frame}
 
-\begin{frame}
-    \frametitle{Introduction}
-    \framesubtitle{Parallel computing background}
-    \begin{description}
-        \item[Performance]
-                Capacity of perform individual instructions in a certain time.
-        \item[Throughput]
-                Capacity of perform a whole task in a certain time.
-        \item[Latency]
-                Measure of time delay experienced in a system.
-        \item[Granularity]
-                Broke down a system into small parts.(Coarse and Fine)
-    \end{description}
-\end{frame}
-
+%
+%
+%\begin{frame}
+%    \frametitle{Introduction}
+%    \framesubtitle{The initial idea}
+%    \begin{enumerate}
+%        \item N-body introduction?
+%        \item The problems related to the galactic center,
+%              or planetary systems...?
+%        \item The widely know N-body integrators have problems
+%              with the Energy conservation...?
+%    \end{enumerate}
+%\end{frame}
+%
+%\begin{frame}
+%    \frametitle{Introduction}
+%    \framesubtitle{Why write a new integrator?}
+%    \begin{itemize}
+%            \item Previous work:
+%            \begin{itemize}
+%                \item Aarseth integrators (NBODY0, NBODY1, ..., NBODY7)
+%                \item Gravity Pipe (GRAPE).
+%            \end{itemize}
+%            \item GPU is replacing the CPU to perform scientific calculations.
+%                 \emph(``General Purpose computing on GPUs'' - \url{http://gpgpu.org})
+%            \item ...another reason.
+%    \end{itemize}
+%\end{frame}
+%
+%\begin{frame}
+%    \frametitle{Introduction}
+%    \framesubtitle{Parallel computing background}
+%    \begin{description}
+%        \item[Task parallelism]
+%            Each processor perform a self task.
+%        \item[Data parallelism]
+%            Each processor perform the same task, but on its own data set.
+%    \end{description}
+%\end{frame}
+%
+%\begin{frame}
+%    \frametitle{Introduction}
+%    \framesubtitle{Parallel computing background}
+%    \begin{description}
+%        \item[Performance]
+%                Capacity of perform individual instructions in a certain time.
+%        \item[Throughput]
+%                Capacity of perform a whole task in a certain time.
+%        \item[Latency]
+%                Measure of time delay experienced in a system.
+%        \item[Granularity]
+%                Broke down a system into small parts.(Coarse and Fine)
+%    \end{description}
+%\end{frame}
+%
