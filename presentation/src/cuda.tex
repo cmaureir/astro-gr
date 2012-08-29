@@ -2,7 +2,15 @@
     \frametitle{CUDA}
     \framesubtitle{Introduction}
     \begin{itemize}
-        \item 
+        \item Compute Unified Device Architecture (CUDA).
+        \item Computing engine in Nvidia GPUs.
+        \item Some advantages:
+        \begin{itemize}
+            \item Scattered reads.
+            \item Shared memory.
+            \item Faster communication between CPU/GPU.
+            \item etc.
+        \end{itemize}
     \end{itemize}
 \end{frame}
 
@@ -17,21 +25,49 @@
     \end{figure}
 \end{frame}
 
-\begin{frame}
+\begin{frame}[fragile]
     \frametitle{CUDA}
     \framesubtitle{Program structure - Example}
+    \begin{lstlisting}
+       __global__ void VecAdd(float* A, float* B, float* C)
+        {
+            int i = threadIdx.x;
+            C[i] = A[i] + B[i];
+        }
 
-    ...
+        int main()
+        {
+            ...
+            // Llamada kernel con N hebras en 1 bloque
+            VecAdd <<< 1 , N >>> (A, B, C);
+            ...
+        }
+    \end{lstlisting}
 \end{frame}
 
 
 
 \begin{frame}
     \frametitle{CUDA}
-    \framesubtitle{Threads and blocks}
+    \framesubtitle{Threads}
     \begin{itemize}
-        \item 
+        \item Lighweight.
+        \item Efficients.
+        \item Cooperation.
+        \item Synchronization.
+        \item Organization and programming.
     \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{CUDA}
+    \framesubtitle{Threads execution model}
+    \begin{figure}
+        \centering
+        \label{fig:cuda-threads}
+        \includegraphics[width=0.5\textwidth]{img/cuda-threads}
+        \caption{Threads and blocks on the Hardware and Software}
+    \end{figure}
 \end{frame}
 
 \begin{frame}
@@ -64,11 +100,37 @@
     \end{table}
 \end{frame}
 
-\begin{frame}
+\begin{frame}[fragile]
     \frametitle{CUDA}
     \framesubtitle{Memories - Example}
 
-    ...
+    \begin{lstlisting}
+        #include <stdio.h>
+
+        __constant__ int N = 10;
+        __device__ float values[10];
+
+        __global__ void foo(float *array)
+        {
+            __shared__ float serie[10];
+
+            int j;
+            float tmp[10];
+            int id = threadIdx.x;
+
+            for (j = 0; j < N; j++){
+                // ...
+            }
+        }
+
+        int main()
+        {
+            ...
+            foo <<< nblocks, nthreads, memsize >>> (array);
+            ...
+            return 0;
+        }
+    \end{lstlisting}
 \end{frame}
 
 \begin{frame}
@@ -82,8 +144,25 @@
     \end{figure}
 \end{frame}
 
-\begin{frame}
+\begin{frame}[fragile]
     \frametitle{CUDA}
-    \framesubtitle{Programming strategy - Example}
-    ...
+    \framesubtitle{Programming strategy}
+    \begin{itemize}
+        \item Allocating memory
+        \begin{lstlisting}
+            cudaMalloc((void**)&device_array, size);
+        \end{lstlisting}
+        \item Copying memory from Host to Device
+        \begin{lstlisting}
+            cudaMemcpy(device_array, host_array, size, cudaMemcpyHostToDevice);
+        \end{lstlisting}
+        \item Copying memory from Device to Host.
+        \begin{lstlisting}
+            cudaMemcpy(host_array, device_array, size, cudaMemcpyDeviceToHost);
+        \end{lstlisting}
+        \item Freeing memory
+        \begin{lstlisting}
+            cudaFree(device_array);
+        \end{lstlisting}
+    \end{itemize}
 \end{frame}

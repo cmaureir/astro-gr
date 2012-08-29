@@ -14,6 +14,9 @@
 \newcommand{\red}{\textcolor{red}}
 \newcommand{\green}{\textcolor{green}}
 \newcommand{\oran}{\textcolor{oran}}
+\definecolor{gray97}{gray}{.97}
+\definecolor{gray75}{gray}{.75}
+\definecolor{gray45}{gray}{.45}
 
 \renewcommand\mathfamilydefault{\rmdefault}
 
@@ -24,6 +27,46 @@
           watermarkheight=50px,
           watermarkheightmult=1,
           ]{Torino}
+
+\lstset{ frame=Ltb,
+     framerule=0pt,
+     aboveskip=0.5cm,
+     framextopmargin=3pt,
+     framexbottommargin=3pt,
+     framexleftmargin=0.4cm,
+     framesep=0pt,
+     rulesep=.4pt,
+     backgroundcolor=\color{gray97},
+     rulesepcolor=\color{black},
+     %
+     stringstyle=\ttfamily,
+     showstringspaces = false,
+     basicstyle=\tiny\ttfamily,
+     %commentstyle=\color{gray45},
+     %keywordstyle=\bfseries,
+     %
+     numbers=left,
+     numbersep=13pt,
+     numberstyle=\tiny,
+     numberfirstline = false,
+     breaklines=true,
+     emph = {[1]\_\_device\_\_,\_\_global\_\_,\_\_syncthreads,pthread\_create,pthread\_join,pragma,omp,parallel,private, threadIdx, blockDim, blockIdx,cudaThreadSynchronize},
+     emphstyle={[1]\color{blue}},
+   }
+
+% minimizar fragmentado de listados
+\lstnewenvironment{listing}[1][]
+   {\lstset{#1}\pagebreak[0]}{\pagebreak[0]}
+
+\lstdefinestyle{consola}
+   {basicstyle=\scriptsize\bf\ttfamily,
+    backgroundcolor=\color{gray75},
+   }
+\lstdefinestyle{C}
+   {language=C,
+   }
+
+
 
 \usecolortheme{nouvelle}
 \vspace{-0.5cm}

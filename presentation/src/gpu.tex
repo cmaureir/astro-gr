@@ -6,9 +6,9 @@
         \item Now, there are a lot of languages, applications, libraries, etc
             who really help to enter in the GPU Computing world.
         \begin{itemize}
-            \item OpenCL, CUDA.
+            \item OpenCL, CUDA, CUDA Fortran, OpenACC, jCUDA, CUDA.NET, PyCUDA, etc.
             \item MATLAB.
-            \item CUBLAS, CUSP, Thrust, etc.
+            \item cuBLAS, cuSP, cuFFT, Thrust, etc.
         \end{itemize}
     \end{itemize}
 \end{frame}
@@ -36,5 +36,93 @@
         \end{itemize}
         \item The CPU minimize \blue{latency} experienced by 1 thread (big on-chip caches).
         \item The GPU maximize \blue{throughput} of all threads.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{GPU Computing}
+    \framesubtitle{}
+    \begin{itemize}
+        \item The GPU Computing \red{is not} the solution for every computational problem.
+        \item First you need to enter in the ``APOD'' design cycle.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{GPU Computing}
+    \framesubtitle{APOD design cycle}
+    \begin{figure}
+        \centering
+        \label{fig:apod}
+        \includegraphics[width=0.7\textwidth]{img/apod}
+        \caption{GPU Programming Cycle}
+    \end{figure}
+\end{frame}
+
+\begin{frame}
+    \frametitle{GPU Computing}
+    \framesubtitle{APOD - Asses}
+    \begin{itemize}
+        \item What?
+        \begin{itemize}
+            \item Locate the parts of the code, responsible for the bulk of the execution time.
+        \end{itemize}
+        \item How?
+        \begin{itemize}
+            \item Using profiling tools (e.g. \texttt{gprof})
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{GPU Computing}
+    \framesubtitle{APOD - Parallelize}
+    \begin{itemize}
+        \item What?
+        \begin{itemize}
+            \item Parallelize the hotspots.
+                (Be careful of the refactoring!)
+        \end{itemize}
+        \item How?
+        \begin{itemize}
+            \item Using different techniques and libraries.
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{GPU Computing}
+    \framesubtitle{APOD - Optimize}
+    \begin{itemize}
+        \item What?
+        \begin{itemize}
+            \item Optimize the current implementation (there are a lot of ways to do it!)
+        \end{itemize}
+        \item How?
+        \begin{itemize}
+            \item Reviewing the following ideas:
+            \begin{itemize}
+                \item Data transfer.
+                \item Floating point operations.
+                \item Loop unrolling.
+                \item etc.
+            \end{itemize}
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{GPU Computing}
+    \framesubtitle{APOD - Deploy}
+    \begin{itemize}
+        \item What?
+        \begin{itemize}
+            \item Try on the production step the current parallelization idea,
+              before trying to improve another hotspot.
+        \end{itemize}
+        \item How?
+        \begin{itemize}
+            \item Comparing theoretical and experimental result of the current code.
+        \end{itemize}
     \end{itemize}
 \end{frame}
