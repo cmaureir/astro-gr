@@ -28,7 +28,7 @@
         \item[Latency]
                 Measure of time delay experienced in a system.
         \item[Granularity]
-                Broke down a system into small parts.(Coarse and Fine)
+                Break down a system into small parts.(Coarse and Fine)
     \end{description}
 \end{frame}
 
@@ -37,7 +37,7 @@
     \framesubtitle{Introduction}
     \begin{itemize}
         \item Beginning of the GPU programming was really difficult.
-        \item Nowadays a lot of ``languages'', ``applications'', ``libraries'', etc
+        \item Nowadays a lot of \blue{languages}, \blue{applications}, \blue{libraries}, etc
             are available to enter on the GPU Computing world.
         \begin{itemize}
             \item OpenCL, CUDA, CUDA Fortran, OpenACC, jCUDA, CUDA.NET, PyCUDA, etc.
@@ -64,12 +64,12 @@
     \begin{itemize}
         \item Goals and design
         \begin{itemize}
-            \item The CPU was designed to have a good performances with parallel and non-parallel
+            \item CPU was designed to have a good performances with parallel and non-parallel
                   scenarios.
-            \item The GPU was designed to do highly parallel work.
+            \item GPU was designed to do highly parallel work.
         \end{itemize}
-        \item The CPU minimize \blue{latency} experienced by 1 thread (big on-chip caches).
-        \item The GPU maximize \blue{throughput} of all threads.
+        \item CPU minimizes \blue{latency} experienced by 1 thread (large on-chip caches).
+        \item GPU maximizes \blue{throughput} of all threads.
     \end{itemize}
 \end{frame}
 
@@ -77,8 +77,8 @@
     \frametitle{GPU Computing}
     \framesubtitle{}
     \begin{itemize}
-        \item The GPU Computing \red{is not} the solution for every computational problem.
-        \item It is mandatory to enter in the ``APOD'' design cycle.
+        \item GPU Computing \red{is not} the solution to every computational problem.
+        \item There are always ways to improve the code (Enter in the ``APOD'' design cycle.)
     \end{itemize}
 \end{frame}
 
@@ -103,7 +103,7 @@
         \end{itemize}
         \item How?
         \begin{itemize}
-            \item Using profiling tools (e.g. \texttt{gprof}, \texttt{vTune}, etc)
+            \item Using tools to generate a profile of your code (e.g. \texttt{gprof}, \texttt{vTune}, etc)
         \end{itemize}
     \end{itemize}
 \end{frame}
@@ -114,7 +114,7 @@
     \begin{itemize}
         \item What?
         \begin{itemize}
-            \item Parallelize the ``hotspots''.
+            \item Parallelize the ``bottlenecks''.
                 (Be careful of the code refactoring!)
         \end{itemize}
         \item How?
@@ -122,6 +122,10 @@
             \item Using different techniques and libraries.
         \end{itemize}
     \end{itemize}
+        \begin{block}{Code refactoring}
+            Restructuring an existing code, changing the internal structure without
+            altering the external behaviour.
+        \end{block}
 \end{frame}
 
 \begin{frame}
@@ -130,7 +134,7 @@
     \begin{itemize}
         \item What?
         \begin{itemize}
-            \item Optimize the current implementation (there are a lot of ways to do it!)
+            \item Optimize the current implementation (there are a lot of ways to do it!, and depends on every code.)
         \end{itemize}
         \item How?
         \begin{itemize}
@@ -156,7 +160,7 @@
         \end{itemize}
         \item How?
         \begin{itemize}
-            \item Comparing theoretical and experimental result of the current code.
+            \item Comparing ``theoretical'' and ``experimental'' result of the current code.
         \end{itemize}
     \end{itemize}
 \end{frame}

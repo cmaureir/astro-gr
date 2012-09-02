@@ -10,12 +10,11 @@
     \frametitle{GraviDy}
     \framesubtitle{Introduction}
     \begin{itemize}
-        \item The GPU computing has been used
+        \item GPU computing has been used
             in a lot of new publications related to develop N-body integrators (2012).
         \begin{itemize}
-            \item Improving NBODY6 (\blue{Nitadori and Aarseth}~\cite{2012MNRAS.424..545N})
+            \item Speeding up NBODY6 (\blue{Nitadori and Aarseth}~\cite{2012MNRAS.424..545N})
             \item New N-body codes on hybrid computing (\blue{Capuzzo-Dolcetta et al.}~\cite{2012arXiv1207.2367C})
-            \item Cosmological simulations (\blue{Bard et al}~\cite{2012arXiv1208.3658B}, \blue{Bédorf et al.}~\cite{2012ASPC..453..325B})
         \end{itemize}
     \end{itemize}
 \end{frame}
@@ -25,9 +24,12 @@
     \frametitle{GraviDy}
     \framesubtitle{Introduction}
     \begin{center}
-        \blue{GraviDy} is a semi-Keplerian N-body integrator which aims
-        to use Heterogeneous computing.
+        \blue{GraviDy} is a semi-Keplerian $N$-body integrator which uses
+        heterogeneous computing.
     \end{center}
+    \begin{block}{Heterogeneous computing}
+        ``A system that use a variety of different types of computational units.''
+    \end{block}
 \end{frame}
 
 \begin{frame}
@@ -43,27 +45,39 @@
 \begin{frame}
     \frametitle{GraviDy}
     \framesubtitle{Code}
-    \begin{itemize}
-        \item Written in C++ and CUDA.
-        \item Modular developing.
-    \end{itemize}
+    \begin{columns}
+        \begin{column}{0.5\textwidth}
+            \begin{itemize}
+                \item Written in C++ and CUDA.
+                \item Modular developing.
+            \end{itemize}
+        \end{column}
+        \begin{column}{0.5\textwidth}
+            \begin{figure}
+                \centering
+                \label{fig:navaja}
+                \includegraphics[width=0.8\textwidth]{img/navaja}
+                %\caption{}
+            \end{figure}
+        \end{column}
+    \end{columns}
 \end{frame}
 
-\begin{frame}
-    \frametitle{GraviDy}
-    \framesubtitle{Predictor-Corrector procedure (Hermite 4th order)}
-    \begin{enumerate}
-        \item Initial $a$ and $a^{(1)}$ calculation.
-        \item Initial block timesteps calculation.
-        \item Select particles to move.
-        \begin{enumerate}
-            \item Calculate the predicted position and velocity.
-            \item Calculate the $a$, $a^{(1)}$, $a^{(2)}$ and $a^{(3)}$.
-            \item Apply the correction to the position and velocity.
-            \item Update timesteps.
-        \end{enumerate}
-    \end{enumerate}
-\end{frame}
+%\begin{frame}
+%    \frametitle{GraviDy}
+%    \framesubtitle{Predictor-Corrector procedure (Hermite 4th order)}
+%    \begin{enumerate}
+%        \item Initial $a$ and $a^{(1)}$ calculation.
+%        \item Initial block timesteps calculation.
+%        \item Select particles to move.
+%        \begin{enumerate}
+%            \item Calculate the predicted position and velocity.
+%            \item Calculate the $a$, $a^{(1)}$, $a^{(2)}$ and $a^{(3)}$.
+%            \item Apply the correction to the position and velocity.
+%            \item Update timesteps.
+%        \end{enumerate}
+%    \end{enumerate}
+%\end{frame}
 
 \begin{frame}[fragile]
     \frametitle{GraviDy}
@@ -98,24 +112,18 @@
                          \dfrac{1}{2!}       \boldsymbol{      a}_{i} \Delta t^{2} +
                          \dfrac{1}{3!}       \boldsymbol{\dot{a}}_{i} \Delta t^{3}
         \end{eqnarray}
-        \item where $\boldsymbol{r}_{k}$ and its derivatives 
-            are obtained from the unperturbed motion along a Keplerian orbit,
-        \begin{eqnarray}
-            \blue{\boldsymbol{r}_{k,pred}} =  \boldsymbol{      r}_{k}              +
-                                       \boldsymbol{      v}_{k} \Delta t     +
-                         \dfrac{1}{2!} \boldsymbol{      a}_{k} \Delta t^{2} +
-                         \dfrac{1}{3!} \boldsymbol{\dot{a}}_{k} \Delta t^{3}
-        \end{eqnarray}
+        $\boldsymbol{r}_{k}$ and its derivatives 
+            are obtained from the unperturbed motion along a Keplerian orbit
 
     \end{enumerate}
 \end{frame}
 
 \begin{frame}
-    \frametitle{Preliminary results}
+    \frametitle{Preliminary results (performed @ AEI)}
     \framesubtitle{Hardware}
     \begin{itemize}
-        \item GPU: Tesla C2050 (448 cores)
-        \item CPU: Intel(R) Xeon(R) CPU E5504  @ 2.00GHz (4 cores)
+        \item 1 x GPU: Tesla C2050 (448 cores)
+        \item 1 x CPU: Intel(R) Xeon(R) CPU E5504  @ 2.00GHz (4 cores)
 
     \end{itemize}
 \end{frame}
@@ -125,18 +133,40 @@
     \begin{figure}
         \centering
         \label{fig:init-time}
-        \includegraphics[width=0.7\textwidth]{img/plot-init}
-        \caption{Initial $a$ and $\dot{a}$ calculation}
+        \includegraphics[width=0.8\textwidth]{img/plot-init}
+        %\caption{Initial $a$ and $\dot{a}$ calculation}
     \end{figure}
 \end{frame}
+
+%\begin{frame}
+%    \frametitle{Preliminary results}
+%    \framesubtitle{Energy Errors (Relative and Absolute)}
+%    \begin{itemize}
+%        \item CPU:  \sim $10^{-13} - \sim 10^{-16}$
+%        \item GPU:  \sim $10^{-12} - \sim 10^{-15}$
+%    \end{itemize}
+    %\begin{tabular}{l|r|r|r|r}
+    %    Error    & 1024 & 2048 & 4096 & 8192 \\
+    %    Relative CPU& \~10^{-14} & \~10^{-14}
+    %    Relative GPU& 
+    %    Absolute CPU& \~10^{-14}
+    %    Absolute GPU&
+    %\end{tabular}
+    %\begin{figure}
+    %    \centering
+    %    \label{fig:init-time}
+    %    %\includegraphics[width=0.8\textwidth]{img/result-init_accjerk}
+    %    \caption{Energy Conservation}
+    %\end{figure}
+%\end{frame}
 
 \begin{frame}
     \frametitle{Preliminary results}
     \begin{figure}
         \centering
         \label{fig:init-time}
-        %\includegraphics[width=0.8\textwidth]{img/result-init_accjerk}
-        \caption{Energy Conservation}
+        \includegraphics[width=0.8\textwidth]{img/plot-total.pdf}
+        %\caption{Execution time ($10^{15}$ iterations)}
     \end{figure}
 \end{frame}
 
@@ -151,12 +181,3 @@
     \end{figure}
 \end{frame}
 
-%\begin{frame}
-%    \frametitle{Preliminary results}
-%    \begin{figure}
-%        \centering
-%        \label{fig:init-time}
-%        %\includegraphics[width=0.8\textwidth]{img/result-init_accjerk}
-%        \caption{Execution time}
-%    \end{figure}
-%\end{frame}
