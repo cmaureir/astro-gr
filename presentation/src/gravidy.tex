@@ -97,23 +97,25 @@
     \frametitle{GraviDy}
     \framesubtitle{Kepler's correction}
     \begin{enumerate}
-        \item This is applied to the \blue{Predicted} step.
-        \item The normal Hermite formula is:
+        \item New position of a particle after a time step $\Delta t$:
         \begin{eqnarray}
-            \boldsymbol{r}_{pred} =    \boldsymbol{      r}_{i}              +
-                                       \boldsymbol{      v}_{i} \Delta t     +
-                         \dfrac{1}{2!} \boldsymbol{      a}_{i} \Delta t^{2} +
-                         \dfrac{1}{3!} \boldsymbol{\dot{a}}_{i} \Delta t^{3}
+            \boldsymbol{r'} =    \boldsymbol{      r}              +
+                                       \boldsymbol{      v} \Delta t     &+&
+                         \dfrac{1}{2!} \boldsymbol{      a}_{K} \Delta t^{2} +
+                         \dfrac{1}{3!} \boldsymbol{\dot{a}}_{K} \Delta t^{3} + \ldots \nonumber\\
+                          &+& 
+                         \dfrac{1}{2!} \boldsymbol{      a}_{P} \Delta t^{2} +
+                         \dfrac{1}{3!} \boldsymbol{\dot{a}}_{P} \Delta t^{3} + \ldots
         \end{eqnarray}
         \item With Kepler's correction:
         \begin{eqnarray}
             \boldsymbol{r}_{pred} =    \blue{\boldsymbol{      r}_{k,pred}}         +
-                                             \boldsymbol{      v}_{i} \Delta t     +
+                         \dfrac{1}{2!}       \boldsymbol{      a}_{i} \Delta t^{2} +
+                         \dfrac{1}{3!}       \boldsymbol{\dot{a}}_{i} \Delta t^{3} \\
+            \boldsymbol{v}_{pred} =    \blue{\boldsymbol{      v}_{k,pred}}         +
                          \dfrac{1}{2!}       \boldsymbol{      a}_{i} \Delta t^{2} +
                          \dfrac{1}{3!}       \boldsymbol{\dot{a}}_{i} \Delta t^{3}
         \end{eqnarray}
-        $\boldsymbol{r}_{k}$ and its derivatives 
-            are obtained from the unperturbed motion along a Keplerian orbit
 
     \end{enumerate}
 \end{frame}
